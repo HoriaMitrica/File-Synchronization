@@ -32,20 +32,22 @@ namespace VeeamTask
             CreateSourceAndReplica(source, replica);
             StreamWriter logFile = new StreamWriter(logFilePath, true);
             
+            //Checks every directory in the replica and deletes any that are not found in the source
             DeleteFilesNotInSource(logFile,source,replica);
+            
+            //Creates the missing directories that are not found in the replica
             CreateFilesInReplica(logFile,source, replica);
+            
             string[] files = Directory.GetFiles(source, "*", SearchOption.AllDirectories);
             foreach (string file in files)
             {
                 string relativePath = GetRelativePath(source, file);
                 string replicaFile = replica + relativePath;
-                string filePath = Path.GetDirectoryName(replicaFile);
                 if (!File.Exists(replicaFile))
                 {
                     LogMessage("File created because it was found in Source and not in Replica: "+replicaFile,logFile);
                     File.Copy(file, replicaFile, true);
                 }
-                
             }
             LogMessage( "Synchronization completed at " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),logFile);
             logFile.Close();
@@ -97,6 +99,7 @@ namespace VeeamTask
                     }
                     else
                     { 
+                        //recursively checking the sub directories for any other directories
                         CreateFilesInReplica(logFile,subDirectory.FullName, subfolderPath);
                     }
                 }
@@ -127,6 +130,7 @@ namespace VeeamTask
                     }
                     else
                     { 
+                        //recursively checking the sub directories for any other directories
                         DeleteFilesNotInSource(logFile,subfolderPath, subfolder.FullName);
                     }
                 }
