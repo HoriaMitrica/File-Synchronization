@@ -29,9 +29,9 @@ namespace VeeamTask
 
         static void SynchronizeFolders(string source, string replica, string logFilePath)
         {
+            CreateSourceAndReplica(source, replica);
             StreamWriter logFile = new StreamWriter(logFilePath, true);
             
-            CreateSourceAndReplica(logFile,source, replica);
             DeleteFilesNotInSource(logFile,source,replica);
             CreateFilesInReplica(logFile,source, replica);
             string[] files = Directory.GetFiles(source, "*", SearchOption.AllDirectories);
@@ -42,12 +42,12 @@ namespace VeeamTask
                 string filePath = Path.GetDirectoryName(replicaFile);
                 if (!File.Exists(replicaFile))
                 {
-                    LogMessage(logFile,"File created because it was found in Source and not in Replica: "+replicaFile);
+                    LogMessage("File created because it was found in Source and not in Replica: "+replicaFile,logFile);
                     File.Copy(file, replicaFile, true);
                 }
                 
             }
-            LogMessage(logFile, "Synchronization completed at " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            LogMessage( "Synchronization completed at " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),logFile);
             logFile.Close();
             }
 
@@ -60,22 +60,25 @@ namespace VeeamTask
                 return path.Substring(source.Length, path.Length - source.Length) + filename;
             }
 
-            static void LogMessage(StreamWriter logFile, string message)
+            static void LogMessage( string message,StreamWriter logFile=null)
             {
-                logFile.WriteLine(message + "\n");
+                if (logFile != null)
+                {
+                    logFile.WriteLine(message + "\n");
+                }
                 Console.WriteLine(message + "\n");
             }
 
-            static void CreateSourceAndReplica(StreamWriter logFile,string source, string replica)
+            static void CreateSourceAndReplica(string source, string replica)
             {
                 if (!Directory.Exists(source))
                 {
-                    LogMessage(logFile,"Created folder: "+source);
+                    LogMessage("Created folder: "+source);
                     Directory.CreateDirectory(source);
                 }
                 if (!Directory.Exists(replica))
                 {
-                    LogMessage(logFile,"Created folder: "+replica);
+                    LogMessage("Created folder: "+replica);
                     Directory.CreateDirectory(replica);
                 }
             }
@@ -89,8 +92,8 @@ namespace VeeamTask
                     if (!Directory.Exists(subfolderPath))
                     {
                         Directory.CreateDirectory(Path.Combine(replica,subDirectory.Name));
-                        LogMessage(logFile,
-                            "Folder created because it was in Source but not in Replica: "+subfolderPath); 
+                        LogMessage("Folder created because it was in Source but not in Replica: "+subfolderPath,
+                            logFile); 
                     }
                     else
                     { 
@@ -108,8 +111,8 @@ namespace VeeamTask
                     if (!sourceFileNames.Contains(replicaFile.Name))
                     {
                         replicaFile.Delete();
-                        LogMessage(logFile,
-                            "File deleted because it was not found in Source: " + replicaFile.FullName);
+                        LogMessage("File deleted because it was not found in Source: " + replicaFile.FullName,
+                            logFile);
                     }
                 }
                 foreach (DirectoryInfo subfolder in replica_info.GetDirectories())
@@ -118,8 +121,9 @@ namespace VeeamTask
                     if (!Directory.Exists(subfolderPath))
                     {
                         subfolder.Delete(true);
-                        LogMessage(logFile,
-                            "Folder deleted because it was not found in Source: "+subfolder.FullName); 
+                        LogMessage(
+                            "Folder deleted because it was not found in Source: "+subfolder.FullName,
+                            logFile); 
                     }
                     else
                     { 
