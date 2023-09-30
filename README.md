@@ -4,9 +4,9 @@ This project takes two files and synchronizes them, meaning any change you make 
 
 ## How to run
 
-1. Enter in the project's folder
-2. Copy the path of the .NET Framework and add csc.exe followed by Program.cs
-3. Now that we can open the exe file in the console with the four parameters
+1. Enter in the project's folder with cd VeeamTask
+2. Copy the path of the .NET Framework and add \csc.exe followed by Program.cs
+3. Now we can open the exe file in the console with the four parameters
    -source directory path
    -replica directory path
    -the interval at which the synchronization happens
