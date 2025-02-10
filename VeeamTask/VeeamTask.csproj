@@ -9,7 +9,7 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>VeeamTask</RootNamespace>
         <AssemblyName>VeeamTask</AssemblyName>
-        <TargetFrameworkVersion>v8</TargetFrameworkVersion>
+        <TargetFrameworkVersion>net8.0</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
