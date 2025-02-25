@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="VeeamTask.GUI.MainWindow"
+        Title="CleanCode Solutions File Synchronizer" Width="800" Height="500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/> <!-- Logs expand -->
+        </Grid.RowDefinitions>
+
+        <!-- Source Folder -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5">
+            <TextBox x:Name="SourceTextBox" Watermark="Select Source Folder" Width="350"/>
+            <Button x:Name="BrowseSourceButton" Content="📁 Browse"/>
+        </StackPanel>
+
+        <!-- Replica Folder -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5">
+            <TextBox x:Name="ReplicaTextBox" Watermark="Select Replica Folder" Width="350"/>
+            <Button x:Name="BrowseReplicaButton" Content="📁 Browse"/>
+        </StackPanel>
+
+        <!-- Log Folder -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="5">
+            <TextBox x:Name="LogFolderTextBox" Watermark="Select Log Folder" Width="350"/>
+            <Button x:Name="BrowseLogFolderButton" Content="📁 Browse"/>
+        </StackPanel>
+
+        <!-- Sync Interval -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="5">
+            <TextBox x:Name="IntervalTextBox" Watermark="Enter Interval (seconds)" Width="350"/>
+        </StackPanel>
+
+        <!-- Control Buttons -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+            <Button x:Name="StartSyncButton" Content="▶ Start Sync" Width="120"/>
+            <Button x:Name="StopSyncButton" Content="⏹ Stop Sync" Width="120" IsEnabled="False"/>
+        </StackPanel>
+
+        <!-- Error message -->
+        <TextBlock Grid.Row="5" x:Name="ErrorLabel" Foreground="Red" FontWeight="Bold" IsVisible="False"/>
+
+        <!-- Logs -->
+        <Border Grid.Row="6" BorderBrush="Gray" BorderThickness="1" Padding="5" Background="Black">
+            <ScrollViewer Height="200" VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="LogsTextBlock" Foreground="Lime" FontSize="14"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

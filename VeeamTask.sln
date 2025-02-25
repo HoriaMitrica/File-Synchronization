@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeeamTask", "VeeamTask\VeeamTask.csproj", "{9ED7FA62-F3C9-4CA4-82BE-8DC8E549C5C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeeamTask.GUI", "VeeamTask.GUI\VeeamTask.GUI.csproj", "{5720BFCA-A340-4234-B366-44150AB83869}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +15,9 @@ Global
 		{9ED7FA62-F3C9-4CA4-82BE-8DC8E549C5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ED7FA62-F3C9-4CA4-82BE-8DC8E549C5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ED7FA62-F3C9-4CA4-82BE-8DC8E549C5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5720BFCA-A340-4234-B366-44150AB83869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5720BFCA-A340-4234-B366-44150AB83869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5720BFCA-A340-4234-B366-44150AB83869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5720BFCA-A340-4234-B366-44150AB83869}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

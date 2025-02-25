@@ -1,0 +1,80 @@
+# Ignore Visual Studio and JetBrains Rider settings
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vs/
+
+# Ignore build artifacts
+bin/
+obj/
+*.pdb
+*.cache
+*.ilk
+*.ilk
+*.log
+*.tlog
+*.VC.db
+*.VC.opendb
+*.ncb
+*.ipch
+*.sdf
+*.opensdf
+
+# Ignore Avalonia XAML build artifacts
+*.g.cs
+*.g.i.cs
+
+# Ignore NuGet packages
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.assets.json
+nuget.config
+nuget.exe
+*.nuspec
+
+# Ignore .NET Core debug/release folders
+*.dotnet/
+.DOTNET_SERVICING
+*.runtimeconfig.json
+*.deps.json
+
+# Ignore test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+*.testlog
+
+# Ignore user secrets (if used)
+secrets.json
+
+# Ignore Avalonia compiled resources
+*.compiled_bindings.*
+
+# Ignore Rider & Resharper settings
+.idea/
+*.sln.iml
+
+# Ignore Publish output
+publish/
+dist/
+
+*.dll
+*.so
+*.dylib
+
+# Ignore log files
+*.log
+*.tlog
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
