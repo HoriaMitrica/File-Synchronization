@@ -63,7 +63,7 @@ secrets.json
 # Ignore Publish output
 publish/
 dist/
-*.exe
+
 *.dll
 *.so
 *.dylib
